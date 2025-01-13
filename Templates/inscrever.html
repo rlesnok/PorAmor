@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição na Atividade</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Página Inicial</a>
+        <a href="/atividades">Lista de Atividades</a>
+        <a href="/add_atividade">Adicionar Atividade</a>
+    </nav>
+    <h1>Inscrever-se na Atividade: {{ atividade.nome }}</h1>
+    <p><strong>Dia:</strong> {{ atividade.dia }}</p>
+    <p><strong>Turno:</strong> {{ atividade.turno }}</p>
+    <p><strong>Vagas Totais:</strong> {{ atividade.vagas_totais }}</p>
+    <p><strong>Vagas Ocupadas:</strong> {{ atividade.vagas_ocupadas }}</p>
+    <form method="POST">
+        <label for="nome_voluntario">Seu Nome:</label><br>
+        <input type="text" id="nome_voluntario" name="nome_voluntario" required><br><br>
+
+        <label for="contato_voluntario">Contato (opcional):</label><br>
+        <input type="text" id="contato_voluntario" name="contato_voluntario"><br><br>
+
+        <button type="submit">Inscrever-se</button>
+    </form>
+    <br>
+    <a href="/atividades">Voltar para a Lista de Atividades</a>
+</body>
+</html>

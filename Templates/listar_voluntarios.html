@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voluntários da Atividade</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Página Inicial</a>
+        <a href="/atividades">Lista de Atividades</a>
+        <a href="/add_atividade">Adicionar Atividade</a>
+    </nav>
+    <h1>Voluntários da Atividade: {{ atividade.nome }}</h1>
+    <p><strong>Dia:</strong> {{ atividade.dia }}</p>
+    <p><strong>Turno:</strong> {{ atividade.turno }}</p>
+    <p><strong>Vagas Totais:</strong> {{ atividade.vagas_totais }}</p>
+    <p><strong>Vagas Ocupadas:</strong> {{ atividade.vagas_ocupadas }}</p>
+    <h2>Lista de Voluntários</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Contato</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if voluntarios %}
+                {% for voluntario in voluntarios %}
+                <tr>
+                    <td>{{ voluntario.nome_voluntario }}</td>
+                    <td>{{ voluntario.contato_voluntario }}</td>
+                    <td>
+                        <form method="POST" action="/remover_inscricao/{{ voluntario.id }}/{{ atividade.id }}" style="display:inline;">
+                            <button type="submit" onclick="return confirm('Tem certeza que deseja remover este voluntário?');">Remover</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">Nenhum voluntário inscrito.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/atividades">Voltar para a Lista de Atividades</a>
+</body>
+</html>

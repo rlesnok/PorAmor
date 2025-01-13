@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Atividades</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Página Inicial</a>
+        <a href="/atividades">Lista de Atividades</a>
+        <a href="/add_atividade">Adicionar Atividade</a>
+    </nav>
+    <h1>Lista de Atividades</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Dia</th>
+                <th>Turno</th>
+                <th>Vagas Totais</th>
+                <th>Vagas Ocupadas</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for atividade in atividades %}
+            <tr>
+                <td>{{ atividade.id }}</td>
+                <td>{{ atividade.nome }}</td>
+                <td>{{ atividade.dia }}</td>
+                <td>{{ atividade.turno }}</td>
+                <td>{{ atividade.vagas_totais }}</td>
+                <td>{{ atividade.vagas_ocupadas }}</td>
+                <td>
+                    {% if atividade.vagas_ocupadas < atividade.vagas_totais %}
+                        <a href="/inscrever/{{ atividade.id }}">Inscrever</a>
+                    {% else %}
+                        <span style="color: red;">Esgotado</span>
+                    {% endif %}
+                    |
+                    <a href="/voluntarios/{{ atividade.id }}">Voluntários</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/">Voltar para a Página Inicial</a>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Escalas - Página Inicial</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Página Inicial</a>
+        <a href="/atividades">Lista de Atividades</a>
+        <a href="/add_atividade">Adicionar Atividade</a>
+    </nav>
+    
+    <div class="container">
+        <h1>Bem-vindo ao Sistema de Escalas!</h1>
+        <p>Este é o sistema para gerenciar as atividades e inscrições de voluntários da igreja.</p>
+
+        <div class="buttons">
+            <a href="/atividades" class="btn">Ver Atividades</a>
+            <a href="/add_atividade" class="btn">Adicionar Nova Atividade</a>
+        </div>
+    </div>
+</body>
+</html>
